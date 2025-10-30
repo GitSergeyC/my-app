@@ -1,0 +1,218 @@
+.side-nav {
+  width: 250px;
+  background-color: #fff;
+  box-shadow: 2px 0 0 0 rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-list li {
+  font-size: 16px;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-list li:hover {
+  color: #25D366;
+}
+
+/* === 1280px и выше === */
+@media (min-width: 1280px) {
+  .side-nav {
+    width: 260px;
+  }
+}
+
+/* === 1024px === */
+@media (max-width: 1024px) {
+  .side-nav {
+    width: 220px;
+    padding: 15px;
+  }
+  .nav-title {
+    font-size: 17px;
+  }
+  .nav-list li {
+    font-size: 15px;
+  }
+}
+
+/* === 768px === */
+@media (max-width: 768px) {
+  .side-nav {
+    width: 180px;
+    padding: 10px;
+  }
+  .nav-title {
+    font-size: 16px;
+  }
+  .nav-list li {
+    font-size: 14px;
+  }
+}
+
+/* === 320px === */
+@media (max-width: 480px) {
+  .side-nav {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    padding: 10px 20px;
+    align-items: center;
+  }
+  .nav-title {
+    font-size: 14px;
+    text-align: center;
+  }
+  .nav-list {
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-list li {
+    font-size: 13px;
+  }
+}
+/* === Основной стиль === */
+.side-nav {
+  position: fixed;
+  width: 250px;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-list li {
+  font-size: 16px;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-list li:hover {
+  color: #25D366;
+}
+
+/* === Кнопка-гамбургер === */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  z-index: 1100;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+/* === Адаптивность === */
+
+/* 💻 Планшеты (до 1024px) */
+@media (max-width: 1024px) {
+  .side-nav {
+    width: 220px;
+  }
+}
+
+/* 📱 Мобильные (до 768px) */
+@media (max-width: 768px) {
+  .side-nav {
+    width: 200px;
+    padding: 15px;
+  }
+}
+
+/* 📱 Смартфоны (до 480px) */
+@media (max-width: 480px) {
+  .side-nav {
+    transform: translateX(-100%);
+    width: 70%;
+    max-width: 260px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .side-nav.active {
+    transform: translateX(0);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Анимация иконки */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-title {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .nav-list {
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .nav-list li {
+    font-size: 14px;
+  }
+}
