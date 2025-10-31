@@ -1,0 +1,218 @@
+/* === Основной контейнер страницы === */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fafafa;
+  color: #333;
+  font-family: "Inter", sans-serif;
+}
+
+/* === Герой-секция === */
+.hero {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background-color: #25D366;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1eb85a;
+}
+
+/* === Особенности === */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 50px 20px;
+  background: #fff;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  text-align: center;
+  max-width: 200px;
+}
+
+.feature-item p {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* === Галерея === */
+.gallery {
+  padding: 60px 20px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.gallery h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+/* === О нас === */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 20px;
+  background-color: #fff;
+  flex-wrap: wrap;
+}
+
+.about-img {
+  flex: 1;
+  min-width: 300px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+}
+
+.about-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.about-text h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* === Подвал === */
+.footer {
+  text-align: center;
+  background: #25D366;
+  color: #fff;
+  padding: 15px;
+  font-size: 14px;
+  margin-top: auto;
+}
+
+/* === 💻 Адаптивность === */
+
+/* Планшеты */
+@media (max-width: 1024px) {
+  .hero {
+    height: 350px;
+  }
+  .hero-content h1 {
+    font-size: 30px;
+  }
+  .gallery h2 {
+    font-size: 24px;
+  }
+}
+
+/* Смартфоны */
+@media (max-width: 768px) {
+  .hero {
+    height: 300px;
+  }
+  .hero-content h1 {
+    font-size: 24px;
+  }
+  .features {
+    gap: 20px;
+    padding: 40px 10px;
+  }
+  .about {
+    flex-direction: column;
+    padding: 40px 10px;
+  }
+  .about-img {
+    width: 100%;
+    height: 250px;
+  }
+  .about-text {
+    text-align: center;
+  }
+}
+
+/* Маленькие экраны */
+@media (max-width: 480px) {
+  .hero {
+    height: 250px;
+  }
+  .hero-content h1 {
+    font-size: 20px;
+  }
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  .gallery h2 {
+    font-size: 20px;
+  }
+  .about-text h2 {
+    font-size: 20px;
+  }
+  .about-text p {
+    font-size: 15px;
+  }
+  .footer {
+    font-size: 12px;
+  }
+}

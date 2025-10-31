@@ -1,0 +1,59 @@
+/* === Общая структура приложения === */
+.app-layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+/* === Основная область контента === */
+.main-content {
+  flex: 1;
+  padding: 80px 40px 40px 300px; /* отступы от header и side-nav */
+  box-sizing: border-box;
+  transition: padding 0.3s ease;
+}
+
+/* === Фиксированный header === */
+.App-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001; /* поверх nav */
+}
+
+/* === Фиксированная боковая навигация === */
+.side-nav {
+  position: fixed;
+  top: 70px; /* высота шапки */
+  left: 0;
+  height: calc(100vh - 70px);
+  z-index: 1000;
+}
+
+/* 💻 Планшеты (до 1024px) */
+@media (max-width: 1024px) {
+  .main-content {
+    padding: 80px 30px 30px 240px;
+  }
+}
+
+/* 📱 Мобильные (до 768px) */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 80px 20px 20px 200px;
+  }
+}
+
+/* 📱 Смартфоны (до 480px) */
+@media (max-width: 480px) {
+  .main-content {
+    padding: 80px 20px 20px 20px; /* без левого отступа */
+  }
+
+  .side-nav {
+    top: 60px;
+    height: calc(100vh - 60px);
+  }
+}
