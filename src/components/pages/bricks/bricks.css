@@ -1,107 +1,125 @@
-/* === Основной контейнер страницы === */
+/* === Основные стили === */
 .App {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #fafafa;
+  font-family: 'Inter', 'Roboto', sans-serif;
   color: #333;
-  font-family: "Inter", sans-serif;
+  background-color: #fafafa;
+  overflow-x: hidden;
 }
 
-/* === Герой-секция === */
+/* === Hero секция === */
 .hero {
   position: relative;
-  height: 400px;
+  height: 80vh;
+  background: url('./brick-wall.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
   text-align: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  color: #fff;
 }
 
 .hero::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
-  padding: 0 20px;
+  z-index: 2;
+  max-width: 700px;
+  padding: 20px;
 }
 
 .hero-content h1 {
-  font-size: 36px;
+  font-size: 42px;
+  line-height: 1.2;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 
 .btn-primary {
-  background-color: #25D366;
-  color: #fff;
-  padding: 12px 25px;
-  border-radius: 25px;
+  display: inline-block;
+  background-color: #c3522f;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #1eb85a;
+  background-color: #a54121;
+  transform: translateY(-2px);
 }
 
-/* === Особенности === */
+/* === Особенности (features) === */
 .features {
   display: flex;
   justify-content: center;
+  align-items: stretch;
   gap: 40px;
-  padding: 50px 20px;
-  background: #fff;
+  padding: 80px 20px;
+  background-color: #fff;
   flex-wrap: wrap;
 }
 
 .feature-item {
+  flex: 1 1 250px;
+  max-width: 300px;
   text-align: center;
-  max-width: 200px;
+  background: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 30px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
 }
 
 .feature-item p {
+  margin-top: 12px;
   font-size: 16px;
-  margin-top: 10px;
+  color: #555;
 }
 
 /* === Галерея === */
 .gallery {
-  padding: 60px 20px;
-  background: #fafafa;
+  padding: 60px 40px;
   text-align: center;
 }
 
 .gallery h2 {
-  font-size: 28px;
+  font-size: 32px;
   margin-bottom: 40px;
+  color: #222;
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .gallery-item img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
 }
 
-.gallery-item img:hover {
+.gallery-item:hover img {
   transform: scale(1.05);
 }
 
@@ -111,108 +129,90 @@
   align-items: center;
   justify-content: center;
   gap: 40px;
-  padding: 60px 20px;
-  background-color: #fff;
+  padding: 80px 40px;
   flex-wrap: wrap;
+  background-color: #fff;
 }
 
 .about-img {
-  flex: 1;
-  min-width: 300px;
+  background: url('./artisan.jpg') center/cover no-repeat;
+  width: 400px;
   height: 300px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .about-text {
-  flex: 1;
   max-width: 500px;
 }
 
 .about-text h2 {
-  font-size: 26px;
+  font-size: 30px;
   margin-bottom: 15px;
+  color: #222;
 }
 
 .about-text p {
   font-size: 17px;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #555;
 }
 
-/* === Подвал === */
+/* === Footer === */
 .footer {
+  background-color: #222;
+  color: #ccc;
   text-align: center;
-  background: #25D366;
-  color: #fff;
-  padding: 15px;
+  padding: 30px 10px;
   font-size: 14px;
-  margin-top: auto;
 }
 
-/* === 💻 Адаптивность === */
-
-/* Планшеты */
+/* === Адаптивность === */
 @media (max-width: 1024px) {
-  .hero {
-    height: 350px;
-  }
   .hero-content h1 {
-    font-size: 30px;
-  }
-  .gallery h2 {
-    font-size: 24px;
+    font-size: 34px;
   }
 }
 
-/* Смартфоны */
 @media (max-width: 768px) {
-  .hero {
-    height: 300px;
-  }
-  .hero-content h1 {
-    font-size: 24px;
-  }
   .features {
-    gap: 20px;
-    padding: 40px 10px;
+    padding: 60px 20px;
   }
+
   .about {
     flex-direction: column;
-    padding: 40px 10px;
+    text-align: center;
   }
+
   .about-img {
-    width: 100%;
+    width: 90%;
     height: 250px;
   }
-  .about-text {
-    text-align: center;
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .btn-primary {
+    padding: 10px 22px;
+    font-size: 15px;
   }
 }
 
-/* Маленькие экраны */
 @media (max-width: 480px) {
   .hero {
-    height: 250px;
+    height: 60vh;
   }
+
   .hero-content h1 {
-    font-size: 20px;
+    font-size: 22px;
   }
-  .btn-primary {
-    padding: 10px 20px;
-    font-size: 14px;
+
+  .gallery {
+    padding: 40px 20px;
   }
+
   .gallery h2 {
-    font-size: 20px;
-  }
-  .about-text h2 {
-    font-size: 20px;
-  }
-  .about-text p {
-    font-size: 15px;
-  }
-  .footer {
-    font-size: 12px;
+    font-size: 24px;
   }
 }

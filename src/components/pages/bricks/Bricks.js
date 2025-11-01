@@ -1,5 +1,6 @@
 import React from "react";
 import './bricks.css';
+import ContactForm from './../../contact/ContactForm';
 
 export default function Bricks() {
 
@@ -47,6 +48,8 @@ export default function Bricks() {
           ))}
         </div>
       </section>
+
+      < ContactForm />
 
       <section className="about">
         <div className="about-img"></div>
