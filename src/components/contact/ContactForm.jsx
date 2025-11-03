@@ -1,69 +1,72 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './contactForm.css';
 
-function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    message: ''
-  });
+	export default function ContactForm() {
+		const [form, setForm] = useState({ name: '', phone: '', message: '' });
+		const [success, setSuccess] = useState(false);
+		const [loading, setLoading] = useState(false);
 
-  const [submitted, setSubmitted] = useState(false);
+		const handleSubmit = async (e) => {
+			e.preventDefault();
+			setLoading(true);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+			try {
+				const response = await fetch('http://localhost:5050/send-message', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(form),
+				});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+				const data = await response.json();
+				console.log('Ответ сервера:', data);
 
-    // Здесь можно подключить отправку на сервер, Telegram, почту и т.д.
-    console.log('Отправлено:', formData);
+				if (data.success) {
+					setSuccess(true);
+					setForm({ name: '', phone: '', message: '' });
+					setTimeout(() => setSuccess(false), 4000);
+				} else {
+					alert(data.error || 'Ошибка при отправке.');
+				}
+			} catch (error) {
+				console.error('Ошибка при отправке формы:', error);
+				alert('Не удалось отправить сообщение. Проверьте соединение с сервером.');
+			} finally {
+				setLoading(false);
+			}
+		};
 
-    setSubmitted(true);
-    setFormData({ name: '', phone: '', message: '' });
+		return (
+			<div className="contact-container">
+				<h2>Связаться с нами</h2>
+				<p>Оставьте заявку — мы перезвоним и ответим на все вопросы.</p>
 
-    setTimeout(() => setSubmitted(false), 3000);
-  };
+				<form className="contact-form" onSubmit={handleSubmit}>
+					<input
+						type="text"
+						placeholder="Ваше имя"
+						value={form.name}
+						onChange={(e) => setForm({ ...form, name: e.target.value })}
+						required
+					/>
+					<input
+						type="tel"
+						placeholder="Телефон"
+						value={form.phone}
+						onChange={(e) => setForm({ ...form, phone: e.target.value })}
+						required
+					/>
+					<textarea
+						placeholder="Ваше сообщение"
+						rows="4"
+						value={form.message}
+						onChange={(e) => setForm({ ...form, message: e.target.value })}
+					/>
+					<button type="submit" disabled={loading}>
+						{loading ? 'Отправка...' : 'Отправить'}
+					</button>
+				</form>
 
-  return (
-    <div className="contact-container">
-      <h2>Свяжитесь с нами</h2>
-      <p>Оставьте заявку, и мы перезвоним вам в ближайшее время!</p>
-
-      <form className="contact-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Ваше имя"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Ваш телефон"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-        />
-
-        <textarea
-          name="message"
-          placeholder="Ваше сообщение"
-          value={formData.message}
-          onChange={handleChange}
-          rows="4"
-        ></textarea>
-
-        <button type="submit">Отправить</button>
-      </form>
-
-      {submitted && <p className="success-message">✅ Сообщение отправлено!</p>}
-    </div>
-  );
-}
-
-export default ContactForm;
+				{success && <p className="success-message">✅ Сообщение успешно отправлено!</p>}
+			</div>
+		);
+	}

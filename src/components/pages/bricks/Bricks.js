@@ -1,6 +1,6 @@
 import React from "react";
 import './bricks.css';
-import ContactForm from './../../contact/ContactForm';
+import ContactForm from './../../contact/ContactForm.jsx';
 
 export default function Bricks() {
 
